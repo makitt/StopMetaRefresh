@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    #main { text-align: center; }
+    #box {
+      width: 28em;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <h1><img src="icon_48.png" valign="middle" /> Stop Meta Refresh</h1>
+    <h2>Options</h2>
+    <div id="box">
+      URLs:&nbsp;&nbsp;
+      <label><input type="radio" name="urltype" value="exclude" />Exclude</label>
+      <label><input type="radio" name="urltype" value="include" />Include</label>
+      <br />
+      <textarea name="urls" id="urls" rows="10" cols="60"></textarea>
+      <br />
+    </div>
+    <button id="savebtn">Save</button>&nbsp;&nbsp;<button id="clearbtn">Clear</button>
+  </div>
+  <script type="text/javascript" src="./options.js"></script>
+</body>
+</html>
