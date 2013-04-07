@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Stop Meta Refresh",
-    "version": "0.4",
+    "version": "0.4.1",
     "description": "Remove the meta+refresh tags and reload the page.",
     "options_page": "options.html",
     "page_action": {

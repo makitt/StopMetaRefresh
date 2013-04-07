@@ -1,4 +1,4 @@
-var options = new Array();
+var options = {};
 
 // オプション設定値を取得
 chrome.extension.sendRequest({StopMetaRefresh: 'getOptions'}, function(response) {
@@ -13,12 +13,10 @@ function checkUrl() {
     var returnValue = (options['urltype'] == 'exclude');
     var urls = options['urls'].split("\n");
 
-    if (urls != '') {
-        for (var i in urls) {
-            if (document.URL.indexOf(urls[i]) >= 0) {
-                returnValue = !returnValue;
-                break;
-            }
+    for (var i = 0; i < urls.length; i++) {
+        if ((urls[i] != '') && (document.URL.indexOf(urls[i]) >= 0)) {
+            returnValue = !returnValue;
+            break;
         }
     }
 
@@ -28,9 +26,10 @@ function checkUrl() {
 // refresh があったら削除して再表示
 function execStopMetaRefresh() {
     var metaTags = document.getElementsByTagName('meta');
+    var refAttr;
     for (var i in metaTags) {
         if (metaTags[i].getAttribute) {
-            var refAttr = metaTags[i].getAttribute('http-equiv');
+            refAttr = metaTags[i].getAttribute('http-equiv');
             if ((refAttr) && (refAttr.toLowerCase() == 'refresh')) {
                 chrome.extension.sendMessage({isRefresh: true});
                 disableMetaRefresh(this, this.XMLHttpRequest);
